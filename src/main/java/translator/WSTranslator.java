@@ -33,14 +33,15 @@ public class WSTranslator {
 
     private Channel channel;
     private String queueName;
-    private final String EXCHANGENAME = "whatTranslator.ws";
+    private final String EXCHANGENAME = "whatTranslator";
     private final String REPLYTOQUENAME = "whatNormalizerQueue";
+    private final String ROUTING_KEY="ws";
 
     public void init() throws IOException {
         channel = connector.getChannel();
         channel.exchangeDeclare(EXCHANGENAME, "direct");
         queueName = channel.queueDeclare().getQueue();
-        channel.queueBind(queueName, EXCHANGENAME, "");
+        channel.queueBind(queueName, EXCHANGENAME, ROUTING_KEY);
         service = new InterestRateService();
         receive();
     }
