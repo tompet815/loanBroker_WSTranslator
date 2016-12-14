@@ -88,10 +88,7 @@ public class WSTranslator {
         Map<String, Object> headers = prop.getHeaders();
         for (Map.Entry<String, Object> entry : headers.entrySet()) {
             String key = entry.getKey();
-            Object value = entry.getValue();
-            System.out.println("key "+ key );
-             System.out.println("value "+ value );
-            
+            Object value = entry.getValue();         
         }
 
         String corrId = prop.getCorrelationId();
